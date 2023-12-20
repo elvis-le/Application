@@ -1,19 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 
 namespace FPTBook.Models;
 
-public partial class User
+public partial class User : IdentityUser
 {
-    public int UserId { get; set; }
-
-    public string UserEmail { get; set; } = null!;
-
     public string UserFullName { get; set; } = null!;
-
-    public string UserPassword { get; set; } = null!;
-
-    public int UserType { get; set; }
 
     public string? UserImage { get; set; }
 

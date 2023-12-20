@@ -1,4 +1,5 @@
 ﻿using FPTBook.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FPTBook.Data
 {
@@ -681,89 +682,122 @@ namespace FPTBook.Data
             }
         }
 
-        //public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
-        //{
-        //    using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
-        //    {
-        //        //Roles
-        //        var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.User))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-        //        //Users
-        //        var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
-        //        string adminUserEmail = "misanthrop@gmail.com";
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                string adminUserEmail = "misanthrop@gmail.com";
 
-        //        var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
-        //        if (adminUser == null)
-        //        {
-        //            var newAdminUser = new User()
-        //            {
-        //                UserFullName = "Lê Nguyễn Quốc Khánh",
-        //                UserEmail = adminUserEmail,
-        //                UserType = 1,
-        //                UserImage = "acount1.png",
-        //                EmailConfirmed = true,
-        //            };
-        //            await userManager.CreateAsync(newAdminUser, "misanthrop@");
-        //            await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
-        //        }
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new User()
+                    {
+                        UserFullName = "Lê Nguyễn Quốc Khánh",
+                        UserEmail = adminUserEmail,
+                        UserType = 1,
+                        UserImage = "acount1.png",
+                        EmailConfirmed = true,
+                        UserAddress = "An Giang",
+                        UserPhone = "0974534233",
+                        UserBirthday = DateTime.Parse("1990-01-01"),
+                        UserSex = "Male",
+                    };
+                    await userManager.CreateAsync(newAdminUser, "misanthrop@");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
 
-        //        string appUserEmail = "NguyenVinhPhuc123@gmail.com";
+                string adminUserEmail = "reacthook@gmail.com";
 
-        //        var appUser = await userManager.FindByEmailAsync(appUserEmail);
-        //        if (appUser == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new User()
+                    {
+                        UserFullName = "Vũ Tiến Phát",
+                        UserEmail = adminUserEmail,
+                        UserType = 1,
+                        UserImage = "acount2.png",
+                        EmailConfirmed = true,
+                        UserAddress = "TP HCM",
+                        UserPhone = "0843543264",
+                        UserBirthday = DateTime.Parse("1985-05-15"),
+                        UserSex = "Male",
+                    };
+                    await userManager.CreateAsync(newAdminUser, "reacthook@");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "NguyenVinhPhuc123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+                string appUserEmail = "bruyne@gmail.com";
 
-        //        string appUserEmail1 = "BuiHuuNghia123@gmail.com";
+                var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                if (appUser == null)
+                {
+                    var newAppUser = new User()
+                    {
+                        UserFullName = "Bùi Hữu Nghĩa",
+                        UserEmail = appUserEmail,
+                        UserType = 1,
+                        UserImage = "acount3.png",
+                        EmailConfirmed = true,
+                        UserAddress = "Hoc Mon",
+                        UserPhone = "0784334723",
+                        UserBirthday = DateTime.Parse("1995-03-10"),
+                        UserSex = "Male",
+                    };
+                    await userManager.CreateAsync(newAppUser, "bruyne@");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
 
-        //        var appUser1 = await userManager.FindByEmailAsync(appUserEmail1);
-        //        if (appUser1 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+                string appUserEmail1 = "BuiHuuNghia123@gmail.com";
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "BuiHuuNghia123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+                var appUser1 = await userManager.FindByEmailAsync(appUserEmail1);
+                if (appUser1 == null)
+                {
+                    var newAppUser = new User()
+                    {
 
-        //        string appUserEmail2 = "VuTienPhat123@gmail.com";
+                    };
+                    await userManager.CreateAsync(newAppUser, "BuiHuuNghia123@");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
 
-        //        var appUser2 = await userManager.FindByEmailAsync(appUserEmail2);
-        //        if (appUser2 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+                string appUserEmail2 = "VuTienPhat123@gmail.com";
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "VuTienPhat123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+                var appUser2 = await userManager.FindByEmailAsync(appUserEmail2);
+                if (appUser2 == null)
+                {
+                    var newAppUser = new User()
+                    {
 
-        //        string appUserEmail3 = "TrinhAnhDuong123@gmail.com";
+                    };
+                    await userManager.CreateAsync(newAppUser, "VuTienPhat123@");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
 
-        //        var appUser3 = await userManager.FindByEmailAsync(appUserEmail3);
-        //        if (appUser3 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+                string appUserEmail3 = "TrinhAnhDuong123@gmail.com";
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "TrinhAnhDuong123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
-        //    }
-        //}
+                var appUser3 = await userManager.FindByEmailAsync(appUserEmail3);
+                if (appUser3 == null)
+                {
+                    var newAppUser = new User()
+                    {
+
+                    };
+                    await userManager.CreateAsync(newAppUser, "TrinhAnhDuong123@");
+                    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+                }
+            }
+        }
     }
 }
