@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FPTBook.Models;
 
-public partial class FptbookContext : DbContext
+public partial class FptbookContext : IdentityDbContext<User>
 {
     public FptbookContext()
     {
@@ -33,10 +34,10 @@ public partial class FptbookContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Author>(entity =>
         {
             entity.HasKey(e => e.AuthorId).HasName("PK__Author__70DAFC1447AB37A9");
@@ -77,17 +78,11 @@ public partial class FptbookContext : DbContext
             entity.Property(e => e.CartId).HasColumnName("CartID");
             entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.Number).HasDefaultValue(1);
-            entity.Property(e => e.UserId).HasColumnName("UserID");
 
             entity.HasOne(d => d.Book).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_Cart_Book");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Carts)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_Cart_User");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -139,11 +134,6 @@ public partial class FptbookContext : DbContext
             entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF452D5DC4");
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserID__3E52440B");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
@@ -175,21 +165,10 @@ public partial class FptbookContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC58826B6C");
-
-            entity.HasIndex(e => e.UserEmail, "UQ__Users__08638DF8B890279A").IsUnique();
-
-            entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.UserAddress).HasMaxLength(100);
-            entity.Property(e => e.UserEmail)
-                .HasMaxLength(255)
-                .IsUnicode(false);
             entity.Property(e => e.UserFullName).HasMaxLength(255);
             entity.Property(e => e.UserImage)
                 .HasMaxLength(100)
-                .IsUnicode(false);
-            entity.Property(e => e.UserPassword)
-                .HasMaxLength(255)
                 .IsUnicode(false);
             entity.Property(e => e.UserPhone)
                 .HasMaxLength(12)

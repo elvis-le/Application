@@ -9,8 +9,6 @@ public partial class Cart
 
     public int BookId { get; set; }
 
-    public int UserId { get; set; }
-
     public int Number { get; set; }
 
     public virtual Book Book { get; set; } = null!;
