@@ -2,6 +2,8 @@ using FPTBook.Data;
 using FPTBook.Interfaces;
 using FPTBook.Models;
 using FPTBook.Respository;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,12 @@ builder.Services.AddDbContext<FptbookContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<FptbookContext>();
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
 
 var app = builder.Build();
 
@@ -36,6 +44,6 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 Seed.SeedData(app);
-//await Seed.SeedUsersAndRolesAsync(app);
+await Seed.SeedUsersAndRolesAsync(app);
 
 app.Run();

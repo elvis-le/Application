@@ -1,4 +1,5 @@
 ﻿using FPTBook.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FPTBook.Data
 {
@@ -10,146 +11,7 @@ namespace FPTBook.Data
             {
                 var context = serviceScope.ServiceProvider.GetService<FptbookContext>();
 
-                context.Database.EnsureCreated();
-
-                //if (!context.Users.Any())
-                //{
-                //    context.Users.AddRange(new List<User>()
-                //    {
-                //        new User
-                //{
-                //    UserEmail = "misanthrop@gmail.com",
-                //    UserFullName = "Lê Nguyễn Quốc Khánh",
-                //    UserPassword = "khanhlux",
-                //    UserType = 1,
-                //    UserImage = "acount1.png",
-                //    UserAddress = "An Giang",
-                //    UserPhone = "0974534233",
-                //    UserBirthday = DateTime.Parse("1990-01-01"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "reacthookadmin2@gmail.com",
-                //    UserFullName = "Vũ Tiến Phát",
-                //    UserPassword = "phatfiora",
-                //    UserType = 1,
-                //    UserImage = "acount2",
-                //    UserAddress = "TP HCM",
-                //    UserPhone = "0843543264",
-                //    UserBirthday = DateTime.Parse("1985-05-15"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "bruyne@gmail.com",
-                //    UserFullName = "Bùi Hữu Nghĩa",
-                //    UserPassword = "nghiaveigo",
-                //    UserType = 2,
-                //    UserImage = "acount3",
-                //    UserAddress = "Hoc Mon",
-                //    UserPhone = "0784334723",
-                //    UserBirthday = DateTime.Parse("1995-03-10"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "duyka@gmail.com",
-                //    UserFullName = "Nguyễn Trương Hoàng Duy",
-                //    UserPassword = "duysylas",
-                //    UserType = 2,
-                //    UserImage = "acount4",
-                //    UserAddress = "An Giang",
-                //    UserPhone = "0315373743",
-                //    UserBirthday = DateTime.Parse("1988-07-20"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "erisqueen@gmail.com",
-                //    UserFullName = "Đặng Viễn Hào",
-                //    UserPassword = "haoyasuo",
-                //    UserType = 2,
-                //    UserImage = "acount5",
-                //    UserAddress = "TP HCM",
-                //    UserPhone = "0942737476",
-                //    UserBirthday = DateTime.Parse("1992-11-25"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "turtle@gmail.com",
-                //    UserFullName = "Nguyễn Quang Huy",
-                //    UserPassword = "huythresh",
-                //    UserType = 2,
-                //    UserImage = "acount6",
-                //    UserAddress = "TP HCM",
-                //    UserPhone = "0895363685",
-                //    UserBirthday = DateTime.Parse("1980-09-05"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "tuan@gmail.com",
-                //    UserFullName = "Phùng Hữu Hoài Tuấn",
-                //    UserPassword = "tuanonechame",
-                //    UserType = 2,
-                //    UserImage = "acount7",
-                //    UserAddress = "An Giang",
-                //    UserPhone = "0326826369",
-                //    UserBirthday = DateTime.Parse("1998-02-14"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "phuc@gmail.com",
-                //    UserFullName = "Nguyễn Vĩnh Phúc",
-                //    UserPassword = "phucillaoi",
-                //    UserType = 3,
-                //    UserImage = "acount8",
-                //    UserAddress = "An Giang",
-                //    UserPhone = "0675236792",
-                //    UserBirthday = DateTime.Parse("1982-04-30"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "duong@gmail.com",
-                //    UserFullName = "Trịnh Ánh Dương",
-                //    UserPassword = "duonglienquan",
-                //    UserType = 3,
-                //    UserImage = "acount9",
-                //    UserAddress = "TP HCM",
-                //    UserPhone = "0542373722",
-                //    UserBirthday = DateTime.Parse("1990-12-15"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-                //new User
-                //{
-                //    UserEmail = "mazuong2k3@gmail.com",
-                //    UserFullName = "Đỗ Thiên Ân",
-                //    UserPassword = "thanhchemgio",
-                //    UserType = 3,
-                //    UserImage = "acount10",
-                //    UserAddress = "TP HCM",
-                //    UserPhone = "0632235633",
-                //    UserBirthday = DateTime.Parse("1985-08-22"),
-                //    UserSex = "Male",
-                //    UserSection = 1
-                //},
-
-                //    });
-                //    context.SaveChanges();
-                //}
+                context.Database.EnsureCreated();                
 
                 var cateogories = new List<Category>()
                 {
@@ -681,89 +543,170 @@ namespace FPTBook.Data
             }
         }
 
-        //public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
-        //{
-        //    using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
-        //    {
-        //        //Roles
-        //        var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
-        //        if (!await roleManager.RoleExistsAsync(UserRoles.User))
-        //            await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+                if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                    await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+                
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                string adminUserEmail = "khanh123344@gmail.com";
 
-        //        //Users
-        //        var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
-        //        string adminUserEmail = "misanthrop@gmail.com";
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new User()
+                    {
+                        UserName = "khanh123344",
+                        UserFullName = "Lê Nguyễn Quốc Khánh",
+                        UserSection = 1,
+                        UserType = 1,
+                        UserImage = "acount1.png",
+                        UserAddress = "An Giang",
+                        UserPhone = "0974534233",
+                        UserBirthday = new DateOnly(1990, 01, 01),
+                        Email = adminUserEmail,
+                        EmailConfirmed = true,
+                    };
 
-        //        var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
-        //        if (adminUser == null)
-        //        {
-        //            var newAdminUser = new User()
-        //            {
-        //                UserFullName = "Lê Nguyễn Quốc Khánh",
-        //                UserEmail = adminUserEmail,
-        //                UserType = 1,
-        //                UserImage = "acount1.png",
-        //                EmailConfirmed = true,
-        //            };
-        //            await userManager.CreateAsync(newAdminUser, "misanthrop@");
-        //            await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
-        //        }
+                    await userManager.CreateAsync(newAdminUser, "LeNguyenQuocKhanh123@");
+                    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+                }
+            }
 
-        //        string appUserEmail = "NguyenVinhPhuc123@gmail.com";
+            //public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+            //{
+            //    using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            //    {
+            //        //Roles
+            //        var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        //        var appUser = await userManager.FindByEmailAsync(appUserEmail);
-        //        if (appUser == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+            //        if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+            //            await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            //        if (!await roleManager.RoleExistsAsync(UserRoles.User))
+            //            await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "NguyenVinhPhuc123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+            //        //Users
+            //        var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<User>>();
+            //        string adminUserEmail = "misanthrop@gmail.com";
+            //        try
+            //        {
+            //            var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+            //            if (adminUser == null)
+            //            {
+            //                var newAdminUser = new User()
+            //                {
+            //                    Email = adminUserEmail,
+            //                    UserFullName = "Lê Nguyễn Quốc Khánh",
+            //                    UserImage = "acount1.png",
+            //                    UserAddress = "An Giang",
+            //                    UserPhone = "0974534233",
+            //                    UserBirthday = new DateOnly(1990, 01, 01),
+            //                    UserSex = "Male",
+            //                    UserSection = 1,
+            //                    UserType = 1,
+            //                    EmailConfirmed = true,
+            //                };
 
-        //        string appUserEmail1 = "BuiHuuNghia123@gmail.com";
+            //                await userManager.CreateAsync(newAdminUser, "khanhluX@123");
+            //                await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+            //            }
+            //        } catch (Exception ex)
+            //        {
+            //            Console.WriteLine($"Error creating user: {ex.Message}");
+            //        }
 
-        //        var appUser1 = await userManager.FindByEmailAsync(appUserEmail1);
-        //        if (appUser1 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+            //        //string adminUserEmail1 = "reacthook@gmail.com";
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "BuiHuuNghia123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+            //        //var adminUser1 = await userManager.FindByEmailAsync(adminUserEmail);
+            //        //if (adminUser1 == null)
+            //        //{
+            //        //    var newAdminUser = new User()
+            //        //    {
+            //        //        UserFullName = "Vũ Tiến Phát",
+            //        //        Email = adminUserEmail1,
+            //        //        UserImage = "acount2.png",
+            //        //        UserAddress = "TP HCM",
+            //        //        UserPhone = "0843543264",
+            //        //        UserBirthday = new DateOnly(1985, 05, 15),
+            //        //        UserSex = "Male",
+            //        //        UserSection = 1,
+            //        //        EmailConfirmed = true,
+            //        //    };
+            //        //    await userManager.CreateAsync(newAdminUser, "phatfiora");
+            //        //    await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
+            //        //}
 
-        //        string appUserEmail2 = "VuTienPhat123@gmail.com";
+            //        //string appUserEmail = "bruyne@gmail.com";
 
-        //        var appUser2 = await userManager.FindByEmailAsync(appUserEmail2);
-        //        if (appUser2 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+            //        //var appUser = await userManager.FindByEmailAsync(appUserEmail);
+            //        //if (appUser == null)
+            //        //{
+            //        //    var newAppUser = new User()
+            //        //    {
+            //        //        UserFullName = "Bùi Hữu Nghĩa",
+            //        //        Email = adminUserEmail1,
+            //        //        UserImage = "acount3.png",
+            //        //        UserAddress = "Hoc Mon",
+            //        //        UserPhone = "0784334723",
+            //        //        UserBirthday = new DateOnly(1980, 06, 15),
+            //        //        UserSex = "Male",
+            //        //        UserSection = 1,
+            //        //        EmailConfirmed = true,
+            //        //    };
+            //        //    await userManager.CreateAsync(newAppUser, "nghiaveigo");
+            //        //    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+            //        //}
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "VuTienPhat123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
+            //        //string appUserEmail1 = "duyka@gmail.com";
 
-        //        string appUserEmail3 = "TrinhAnhDuong123@gmail.com";
+            //        //var appUser1 = await userManager.FindByEmailAsync(appUserEmail1);
+            //        //if (appUser1 == null)
+            //        //{
+            //        //    var newAppUser = new User()
+            //        //    {
+            //        //        UserFullName = "Nguyễn Trương Hoàng Duy",
+            //        //        Email = adminUserEmail1,
+            //        //        UserImage = "acount4.png",
+            //        //        UserAddress = "TP HCM",
+            //        //        UserPhone = "0315373743",
+            //        //        UserBirthday = new DateOnly(1990, 07, 15),
+            //        //        UserSex = "Male",
+            //        //        UserSection = 1,
+            //        //        EmailConfirmed = true,
+            //        //    };
+            //        //    await userManager.CreateAsync(newAppUser, "duysylas@");
+            //        //    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+            //        //}
 
-        //        var appUser3 = await userManager.FindByEmailAsync(appUserEmail3);
-        //        if (appUser3 == null)
-        //        {
-        //            var newAppUser = new User()
-        //            {
+            //        //string appUserEmail2 = "erisqueen@gmail.com";
 
-        //            };
-        //            await userManager.CreateAsync(newAppUser, "TrinhAnhDuong123@");
-        //            await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
-        //        }
-        //    }
-        //}
+            //        //var appUser2 = await userManager.FindByEmailAsync(appUserEmail2);
+            //        //if (appUser2 == null)
+            //        //{
+            //        //    var newAppUser = new User()
+            //        //    {
+            //        //        UserFullName = "Đặng Viễn Hào",
+            //        //        Email = adminUserEmail1,
+            //        //        UserImage = "acount5.png",
+            //        //        UserAddress = "TP HCM",
+            //        //        UserPhone = "0315373743",
+            //        //        UserBirthday = new DateOnly(1995, 10, 15),
+            //        //        UserSex = "Male",
+            //        //        UserSection = 1,
+            //        //        EmailConfirmed = true,
+            //        //    };
+            //        //    await userManager.CreateAsync(newAppUser, "haoyasuo");
+            //        //    await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
+            //        //}
+            //    }
+        }
     }
 }

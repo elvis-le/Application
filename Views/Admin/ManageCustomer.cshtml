@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<FPTBook.Models.User>
 @{
     ViewData["Title"] = "ManageCustomer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -99,173 +99,24 @@
                         <th class="th-table-store">EMAIL</th>
                         <th class="th-table-store">SEX</th>
                         <th class="th-table-store">ADRESS</th>
-                        <th class="th-table-store">ORDER</th>
                         <th class="th-table-store">BIRTHDAY</th>
-                        <th class="th-table-store">STATUS</th>
                         <th class="th-table-store">PROPERTY</th>
 
                     </tr>
-
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
-
-                    <tr class="table-tr-store" data-href='url://https://next-comic-one.vercel.app/'>
-                        <td class="td-table-store">
-                            <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
-                        </td>
-                        <td class="td-table-store">QUỐC KHÁNH</td>
-                        <td class="td-table-store">hana@gmail.com</td>
-                        <td class="td-table-store">MALE</td>
-                        <td class="td-table-store">Tân Phú, HÔ CHI MINH</td>
-                        <td class="td-table-store">2567</td>
-                        <td class="td-table-store">24/12/2004</td>
-                        <td class="td-table-store">Active</td>
-                        <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
-                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="table-tr-store">
+                            <td class="td-table-store">
+                                <img id="avatar" class="image-user-store-owner" width="50" height="50" src="~/images/acount3.png" />
+                            </td>
+                            <td class="td-table-store">@item.UserFullName</td>
+                            <td class="td-table-store">@item.Email</td>
+                            <td class="td-table-store">@item.UserSex</td>
+                            <td class="td-table-store">@item.UserAddress</td>
+                            <td class="td-table-store">@item.UserBirthday</td>
+                            <td class="td-table-store"><button class="btn-user-ban button" type="SUNMIT"><i class="fa-solid fa-unlock"></i></button></td>
+                        </tr>
+                    }
                 </table>
             </div>
         </div>

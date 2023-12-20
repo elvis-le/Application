@@ -2,6 +2,7 @@
 using FPTBook.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace FPTBook.Controllers
 {
@@ -21,10 +22,11 @@ namespace FPTBook.Controllers
             return View(books);
         }
 
-        public async Task<IActionResult> ManageCustomerAsync()
+        [HttpGet]
+        public async Task<IActionResult> ManageCustomer()
         {
-            var books = await _bookRepository.GetAll();
-            return View(books);
+            var customer = await _context.Users.ToListAsync();
+            return View(customer);
         }
 
         public async Task<IActionResult> ManageBookAsync()
