@@ -16,13 +16,14 @@ namespace FPTBook.Controllers
             _context = context;
             _bookRepository = bookRepository;
         }
-        public async Task<IActionResult> Index()
-        {
-            var books = await _bookRepository.GetAll();
-            return View(books);
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    var books = await _bookRepository.GetAll();
+        //    return View(books);
+        //}
 
-        public async Task<IActionResult> ManageCustomerAsync()
+        [HttpGet]
+        public async Task<IActionResult> ManageCustomer()
         {
             var customer = await _context.Users.ToListAsync();
             return View(customer);

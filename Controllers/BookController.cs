@@ -25,11 +25,13 @@ namespace FPTBook.Controllers
         }
         public async Task<IActionResult> Detail(int id)
         {
-            if (id == null || _context.Books == null)
+            if (id <= 0 || !_context.Books.Any())
             {
                 return NotFound();
             }
-            var book = _context.Books.FirstOrDefault(b => b.BookId == id);
+            var book = _context.Books
+    .Include(b => b.ImageBooks)
+    .FirstOrDefault(b => b.BookId == id);
             if (book == null)
             {
                 return NotFound();

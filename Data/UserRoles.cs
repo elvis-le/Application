@@ -1,6 +1,6 @@
 ﻿namespace FPTBook.Data
 {
-    public interface UserRoles
+    public class UserRoles
     {
         public const string Admin = "admin";
         public const string User = "user";

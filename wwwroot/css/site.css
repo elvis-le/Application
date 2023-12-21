@@ -255,7 +255,7 @@ body.dark-theme {
 }
 
 .portal-form-wrap .portal-form.register {
-    transform: translateX(430px);
+    transform: translateX(0);
     transition: transform .6s ease;
     transition-delay: 0s;
 }

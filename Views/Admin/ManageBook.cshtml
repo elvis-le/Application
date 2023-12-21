@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Book>
 @{
     ViewData["Title"] = "ManageBook";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <html lang="en">
@@ -33,18 +33,7 @@
             <div class="navbar-item-A1">
 
                 <ul class="navbar-nav">
-                    <li class="nav-item-main">
-                        <p class="">ANALYIS</p>
-                    </li>
-
-                    <li class="nav-item-abc1">
-                        <a class=" active-main" asp-area="" asp-controller="Admin" asp-action="Index">
-                            <span class="nav-link-text">
-                                <i class="fa-solid fa-magnifying-glass-chart"></i>
-                                <linkk> Table Analyis</linkk>
-                            </span>
-                        </a>
-                    </li>
+                    
 
                     <li class="nav-item-main">
                         <p class="">MANAGE</p>
@@ -83,7 +72,7 @@
                                 MANAGE Product
                             </p>
                         </div>
-                        <a asp-controller="StoreOwner" asp-action="AddProduct" class="btn-book-add"><button class="button" id="btn-book-add"><i class="fa-solid fa-plus"></i></button></a>
+                        <a asp-controller="Book" asp-action="Create" class="btn-book-add"><button class="button" id="btn-book-add"><i class="fa-solid fa-plus"></i></button></a>
 
                     </div>
                     <table class="tabale-store-owner">

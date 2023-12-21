@@ -78,17 +78,11 @@ public partial class FptbookContext : IdentityDbContext<User>
             entity.Property(e => e.CartId).HasColumnName("CartID");
             entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.Number).HasDefaultValue(1);
-            entity.Property(e => e.UserId).HasColumnName("UserID");
 
             entity.HasOne(d => d.Book).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.BookId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_Cart_Book");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Carts)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_Cart_User");
         });
 
         modelBuilder.Entity<Category>(entity =>
@@ -140,11 +134,6 @@ public partial class FptbookContext : IdentityDbContext<User>
             entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF452D5DC4");
 
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserID__3E52440B");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>

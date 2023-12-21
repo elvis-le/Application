@@ -8,6 +8,8 @@ public partial class User : IdentityUser
 {
     public string UserFullName { get; set; } = null!;
 
+    public int UserType { get; set; }
+
     public string? UserImage { get; set; }
 
     public string? UserAddress { get; set; }
@@ -20,7 +22,7 @@ public partial class User : IdentityUser
 
     public int UserSection { get; set; }
 
-    public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+    public virtual ICollection<Cart>? Carts { get; set; } = new List<Cart>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+    public virtual ICollection<Order>? Orders { get; set; } = new List<Order>();
 }

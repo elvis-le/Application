@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Book> 
+﻿@model IEnumerable<Book>
 
 @{
     ViewData["Title"] = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
 <html lang="en">
@@ -35,7 +35,7 @@
         </form>
         <i class="fa-solid fa-xmark search__close" id="search-close"></i>
     </div>
-    <main class="main">        
+    <main class="main">
         <section class="home section" id="home">
             <div class="home__container container grid">
                 <div class="home__data">
@@ -92,19 +92,18 @@
                     <p class="services__description">Call us anytime</p>
                 </article>
             </div>
-        </section>     
+        </section>
         <section class="featured section" id="featured">
             <h2 class="section__title">
                 Featured Books
             </h2>
             <div class="featured__container container">
                 <div class="featured__swiper swiper">
-                    <div class="swiper-wrapper">                       
-                        
+                    <div class="swiper-wrapper">
                         @foreach (var item in Model)
-                        {                            
+                        {
                             <article class="featured__card swiper-slide">
-                                <a asp-controller="Book" asp-action="Detail" asp-route-id="@item.BookId">
+                                <a asp-controller="Book" asp-action="detail" asp-route-id="@item.BookId">
                                     <img src="@Url.Content("~/images/" + item.ImageBooks.FirstOrDefault().BookImage)" alt="image" class="featured__img" />
                                     <h2 class="featured__title">@item.BookTitle</h2>
                                     <div class="featured__prices">
@@ -121,7 +120,7 @@
                                     </div>
                                 </a>
                             </article>
-                        } 
+                        }
                     </div>
                     <div class="swiper-button-prev"><i class="fa-solid fa-chevron-left"></i></div>
                     <div class="swiper-button-next"><i class="fa-solid fa-chevron-right"></i></div>
@@ -156,26 +155,9 @@
             <div class="new__container container">
                 <div class="new__swiper swiper">
                     <div class="swiper-wrapper">
-                        <a class="new__card swiper-slide" asp-controller="Book" asp-action="DetailBook">
-                            <img src="~/images/book-1-1.png" alt="image" class="new__img" />
-                            <div>
-                                <h2 class="new__title">Harry potter</h2>
-                                <div class="new__prices">
-                                    <span class="new__discount">$15</span>
-                                    <span class="new__price">$20.99</span>
-                                </div>
-                                <div class="new__starts">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                            </div>
-                        </a>
                         @foreach (var item in Model)
                         {
-                            <a class="new__card swiper-slide" asp-controller="Home" asp-action="DetailBook" asp-route-id="@item.BookId">
+                            <a class="new__card swiper-slide" asp-controller="Customer" asp-action="Details" asp-route-id="@item.BookId">
                                 <img src="@Url.Content("~/images/" + item.ImageBooks.FirstOrDefault().BookImage)" alt="image" class="new__img" />
                                 <div>
                                     <h2 class="new__title">@item.BookTitle</h2>
@@ -192,36 +174,19 @@
                                     </div>
                                 </div>
                             </a>
-                        } 
+                        }
                     </div>
                 </div>
                 <div class="new__swiper swiper">
                     <div class="swiper-wrapper">
-                        <a class="new__card swiper-slide" asp-controller="Book" asp-action="DetailBook" >
-                            <img src="~/images/book-1-1.png" alt="image" class="new__img" />
-                            <div>
-                                <h2 class="new__title">Harry potter</h2>
-                                <div class="new__prices">
-                                    <span class="new__discount">$15</span>
-                                    <span class="new__price">$20.99</span>
-                                </div>
-                                <div class="new__starts">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                            </div>
-                        </a>
                         @foreach (var item in Model)
                         {
-                            <a class="new__card swiper-slide" asp-controller="Home" asp-action="DetailBook" asp-route-id="@item.BookId">
+                            <a class="new__card swiper-slide" asp-controller="Customer" asp-action="Details" asp-route-id="@item.BookId">
                                 <img src="@Url.Content("~/images/" + item.ImageBooks.FirstOrDefault().BookImage)" alt="image" class="new__img" />
                                 <div>
                                     <h2 class="new__title">@item.BookTitle</h2>
                                     <div class="new__prices">
-                                        <span class="new__discount">$@item.BookPrice</span>
+                                        <span class="new__discount">@item.BookPrice</span>
                                         <span class="new__price">$20.99</span>
                                     </div>
                                     <div class="new__starts">
@@ -334,6 +299,6 @@
     </main>
     <script src="~/js/swiper-bundle.min.js"></script>
     <script src="~/js/scrollreveal.min.js"></script>
-    <script src="~/js/site.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
 </html>

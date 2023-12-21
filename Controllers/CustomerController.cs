@@ -1,6 +1,7 @@
 ﻿using FPTBook.Interfaces;
 using FPTBook.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace FPTBook.Controllers
 {
@@ -20,27 +21,24 @@ namespace FPTBook.Controllers
  
         public async Task<IActionResult> Index(int id)
         {
-            //var books = await _bookRepository.GetAll();
-            //return View(books);
-            return View();
+            var books = await _bookRepository.GetAll();
+            return View(books);
         }
 
         
 
-        public async Task<IActionResult> Profile(int id)
+        public async Task<IActionResult> Profile(string email)
         {
-            //if (id == null || _context.Users == null)
-            //{
-            //    return NotFound();
-            //}
-            //var user = await _context.Users
-            //    .FirstOrDefaultAsync(u => u.UserId == id);
-            //if (user == null)
-            //{
-            //    return NotFound();
-            //}
-            //return View(user);
-            return View();
+            if (email == null || _context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }      
 
         // POST: CustomerController1/Create
